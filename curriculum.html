@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4D Recovery, Youth Treatment Curriculum</title>
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Open+Sans:wght@300;400;600&display=swap">
+    
+    <!-- Bootstrap 5 for Accordion -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Young Recovery Logo" class="logo">
+            </a>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="curriculum.html" class="active">Curriculum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>📚 4D Recovery Adolescent Curriculum</h1>
+            <p>Our structured recovery curriculum is designed to empower youth with the knowledge, skills, and support necessary for long-term success.</p>
+        </div>
+    </section>
+
+    <!-- Curriculum Overview -->
+    <section>
+        <div class="container">
+            <h2>📝 Curriculum Overview</h2>
+            <p>Our curriculum consists of <strong>16 interactive lessons</strong>, each focusing on different aspects of adolescent recovery, personal development, and resilience.</p>
+            <p>Click on each section below to expand and access <strong>slides, printouts, and activities.</strong></p>
+        </div>
+    </section>
+
+    <!-- Accordion Curriculum Sections -->
+    <section class="container my-4">
+        <div class="accordion" id="curriculumAccordion">
+
+            <!-- Manually Written 16 Weeks -->
+            <!-- Each Section Includes Google Drive Placeholder Links -->
+
+            <!-- Week 1 - 16 -->
+            <script>
+                const weeks = [
+                    {title: "Understanding Addiction & Recovery", emoji: "🏁", desc: "Exploring the science of substance use disorders and the recovery process."},
+                    {title: "Building Motivation for Change", emoji: "🎯", desc: "Identifying personal reasons for recovery and setting meaningful goals."},
+                    {title: "Coping with Cravings & Triggers", emoji: "🛠️", desc: "Strategies to manage urges and prevent relapse."},
+                    {title: "Healthy Communication & Boundaries", emoji: "💬", desc: "Learning how to express emotions effectively and set boundaries."},
+                    {title: "Building a Support Network", emoji: "🤝", desc: "Finding and maintaining healthy relationships that support recovery."},
+                    {title: "Managing Anxiety & Stress", emoji: "🌿", desc: "Practical tools for reducing anxiety and managing stress."},
+                    {title: "Family Dynamics & Rebuilding Trust", emoji: "👨‍👩‍👧‍👦", desc: "Understanding how addiction affects family relationships and ways to repair trust."},
+                    {title: "Overcoming Guilt & Shame", emoji: "💔", desc: "Addressing guilt and shame as part of the recovery journey and building self-compassion."},
+                    {title: "Healthy Habits & Lifestyle Changes", emoji: "🥗", desc: "Developing daily habits that support mental, physical, and emotional health."},
+                    {title: "Navigating Triggers in Social Settings", emoji: "🎭", desc: "Identifying and avoiding high-risk situations while maintaining friendships."},
+                    {title: "Exploring Personal Identity in Recovery", emoji: "🔍", desc: "Discovering strengths, values, and self-identity beyond substance use."},
+                    {title: "The Role of Peer Support & Community", emoji: "👐", desc: "Understanding how connection and support improve recovery outcomes."},
+                    {title: "Academic & Career Readiness", emoji: "📚", desc: "Developing skills for success in school, work, and long-term goals."},
+                    {title: "Relapse Prevention Planning", emoji: "⚠️", desc: "Creating a personal action plan to prevent relapse and sustain recovery."},
+                    {title: "Building a Life Worth Living", emoji: "🚀", desc: "Identifying passions and developing a vision for the future."},
+                    {title: "Graduation & Reflection", emoji: "🎓", desc: "Reflecting on personal growth and celebrating achievements in recovery."},
+                ];
+
+                document.write(weeks.map((week, index) => `  
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading${index+1}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index+1}">
+                                ${week.emoji} Week ${index+1}: ${week.title}
+                            </button>
+                        </h2>
+                        <div id="collapse${index+1}" class="accordion-collapse collapse" data-bs-parent="#curriculumAccordion">
+                            <div class="accordion-body">
+                                <p>${week.desc}</p>
+                                <p><a href="https://drive.google.com/your-slide-link" target="_blank">📖 View Slides</a> |  
+                                   <a href="https://drive.google.com/your-printout-link" target="_blank">📝 Download Printout</a> |  
+                                   <a href="https://drive.google.com/your-video-link" target="_blank">🎥 Watch Video</a></p>
+                                <button class="btn btn-outline-primary copy-btn" data-link="#heading${index+1}">📋 Copy Link</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join(''));
+            </script>
+
+        </div>
+    </section>
+
+    <!-- Copy Link JavaScript -->
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const link = window.location.origin + window.location.pathname + this.getAttribute('data-link');
+                navigator.clipboard.writeText(link).then(() => {
+                    alert('Link copied to clipboard!');
+                }).catch(err => console.error('Error copying link:', err));
+            });
+        });
+    </script>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>📩 Stay Engaged</h2>
+            <p>Our curriculum is designed to be interactive, with PDFs, videos, and activities added over time.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <p>© 2025 4D Recovery, Youth Services</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Script for Accordion -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
