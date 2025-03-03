@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/footer.css">
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#5BCEF6">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
 </head>
 <body>
 
@@ -41,11 +36,6 @@
         </div>
     </section>
 
-    <!-- PWA Install Button -->
-    <section class="install-section">
-        <button id="installBtn" style="display: none;">Install App</button>
-    </section>
-
     <!-- Call to Action -->
     <section class="cta">
         <div class="container">
@@ -69,32 +59,8 @@
         </div>
     </footer>
 
-    <script>
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(reg => console.log("Service Worker Registered!", reg))
-                .catch(err => console.error("Service Worker Registration Failed:", err));
-        }
-
-        // Install PWA Prompt
-        window.addEventListener("beforeinstallprompt", (event) => {
-            event.preventDefault();
-            let installBtn = document.getElementById("installBtn");
-            installBtn.style.display = "block";
-
-            installBtn.addEventListener("click", () => {
-                event.prompt();
-                event.userChoice.then(choice => {
-                    if (choice.outcome === "accepted") {
-                        console.log("User installed PWA");
-                    } else {
-                        console.log("User dismissed PWA install");
-                    }
-                });
-            });
-        });
-    </script>
+    <!-- Install App Script -->
+    <script src="js/install.js" defer></script>
 
 </body>
 </html>
