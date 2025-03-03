@@ -39,3 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
         installOverlay.style.display = "none"; // Ensure overlay hides after install
     });
 });
+//
