@@ -1,39 +1,41 @@
 let deferredPrompt;
 
-// Listen for the beforeinstallprompt event
-window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault(); // Prevent the default browser prompt
-    deferredPrompt = e; // Store the event for later
-    console.log("✅ beforeinstallprompt event fired!");
+document.addEventListener("DOMContentLoaded", () => {
+    const installOverlay = document.getElementById("installOverlay");
+    const installButton = document.getElementById("installButton");
+    const closeOverlay = document.getElementById("closeOverlay");
 
-    showInstallOverlay(); // Show custom install overlay
-});
-
-function showInstallOverlay() {
-    console.log("📢 Showing install overlay");
-
-    const overlay = document.getElementById("install-overlay");
-    if (overlay) {
-        overlay.style.display = "flex"; // Show overlay
+    if (!installOverlay || !installButton || !closeOverlay) {
+        console.error("Install elements not found in the DOM.");
+        return;
     }
-}
 
-// Handle the install button click
-document.getElementById("install-button").addEventListener("click", async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        if (choice.outcome === "accepted") {
-            console.log("🎉 App installed successfully!");
-        } else {
-            console.log("❌ Installation declined.");
+    // Capture the beforeinstallprompt event
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        deferredPrompt = event;
+        installOverlay.style.display = "flex"; // Show overlay
+    });
+
+    // Handle install button click
+    installButton.addEventListener("click", async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const choiceResult = await deferredPrompt.userChoice;
+            console.log(choiceResult.outcome === "accepted" ? "User accepted install" : "User dismissed install");
+            deferredPrompt = null;
         }
-        deferredPrompt = null;
-    }
-    document.getElementById("install-overlay").style.display = "none"; // Hide overlay
-});
+        installOverlay.style.display = "none";
+    });
 
-// Handle the "Maybe Later" button
-document.getElementById("dismiss-button").addEventListener("click", () => {
-    document.getElementById("install-overlay").style.display = "none"; // Hide overlay
+    // Handle "Maybe Later" button
+    closeOverlay.addEventListener("click", () => {
+        installOverlay.style.display = "none";
+    });
+
+    // Listen for successful install
+    window.addEventListener("appinstalled", () => {
+        console.log("PWA was installed successfully!");
+        installOverlay.style.display = "none"; // Ensure overlay hides after install
+    });
 });
