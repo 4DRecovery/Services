@@ -1,54 +1,39 @@
 let deferredPrompt;
 
-// Wait for the beforeinstallprompt event
+// Listen for the beforeinstallprompt event
 window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault(); // Prevent the default prompt
-    deferredPrompt = e; // Store the event
+    e.preventDefault(); // Prevent the default browser prompt
+    deferredPrompt = e; // Store the event for later
+    console.log("✅ beforeinstallprompt event fired!");
 
-    // Show the install overlay
-    showInstallOverlay();
+    showInstallOverlay(); // Show custom install overlay
 });
 
-// Function to show the install overlay
 function showInstallOverlay() {
-    // Create the overlay elements
-    const overlay = document.createElement("div");
-    overlay.id = "install-overlay";
-    overlay.innerHTML = `
-        <div class="install-popup">
-            <h2>Install 4D Youth App</h2>
-            <p>Get quick access to our services by installing the app.</p>
-            <button id="install-btn">Install</button>
-            <button id="dismiss-btn">Maybe Later</button>
-        </div>
-    `;
+    console.log("📢 Showing install overlay");
 
-    // Append overlay to the body
-    document.body.appendChild(overlay);
-
-    // Add event listeners for buttons
-    document.getElementById("install-btn").addEventListener("click", () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === "accepted") {
-                    console.log("User accepted the install prompt");
-                }
-                deferredPrompt = null;
-                closeInstallOverlay();
-            });
-        }
-    });
-
-    document.getElementById("dismiss-btn").addEventListener("click", () => {
-        closeInstallOverlay();
-    });
-}
-
-// Function to remove the overlay
-function closeInstallOverlay() {
     const overlay = document.getElementById("install-overlay");
     if (overlay) {
-        overlay.remove();
+        overlay.style.display = "flex"; // Show overlay
     }
 }
+
+// Handle the install button click
+document.getElementById("install-button").addEventListener("click", async () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        if (choice.outcome === "accepted") {
+            console.log("🎉 App installed successfully!");
+        } else {
+            console.log("❌ Installation declined.");
+        }
+        deferredPrompt = null;
+    }
+    document.getElementById("install-overlay").style.display = "none"; // Hide overlay
+});
+
+// Handle the "Maybe Later" button
+document.getElementById("dismiss-button").addEventListener("click", () => {
+    document.getElementById("install-overlay").style.display = "none"; // Hide overlay
+});
