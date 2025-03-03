@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/footer.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#5BCEF6">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
 </head>
 <body>
 
@@ -26,7 +31,7 @@
             </ul>
         </nav>
     </header>
-<!-- This website has been designed with love by Robert Sanders @ Recovery Uprise -->
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -36,16 +41,17 @@
         </div>
     </section>
 
-
-   
-    
+    <!-- PWA Install Button -->
+    <section class="install-section">
+        <button id="installBtn" style="display: none;">Install App</button>
+    </section>
 
     <!-- Call to Action -->
     <section class="cta">
         <div class="container">
             <h2>Join Our Community</h2>
             <p>Ready to start your recovery journey? Get in touch today.</p>
-			<a href="https://4drecovery.jotform.com/231350818414956" class="button">Referral form </a>
+            <a href="https://4drecovery.jotform.com/231350818414956" class="button">Referral Form</a>
         </div>
     </section>
 
@@ -62,6 +68,33 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log("Service Worker Registered!", reg))
+                .catch(err => console.error("Service Worker Registration Failed:", err));
+        }
+
+        // Install PWA Prompt
+        window.addEventListener("beforeinstallprompt", (event) => {
+            event.preventDefault();
+            let installBtn = document.getElementById("installBtn");
+            installBtn.style.display = "block";
+
+            installBtn.addEventListener("click", () => {
+                event.prompt();
+                event.userChoice.then(choice => {
+                    if (choice.outcome === "accepted") {
+                        console.log("User installed PWA");
+                    } else {
+                        console.log("User dismissed PWA install");
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
