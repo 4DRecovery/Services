@@ -3,7 +3,7 @@ const ASSETS_TO_CACHE = [
     "/",
     "/index.html",
     "/manifest.json",
-    "/assets/logo.png",
+    "/Services/assets/logo.png",
     "/css/header.css",
     "/css/body.css",
     "/css/footer.css"
