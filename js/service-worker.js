@@ -11,6 +11,7 @@ const ASSETS_TO_CACHE = [
 
 // Install Service Worker & Cache Assets
 self.addEventListener("install", (event) => {
+    console.log("Service Worker: Installing...");
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log("Caching assets...");
@@ -21,6 +22,7 @@ self.addEventListener("install", (event) => {
 
 // Activate Service Worker & Cleanup Old Caches
 self.addEventListener("activate", (event) => {
+    console.log("Service Worker: Activating...");
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
@@ -37,6 +39,7 @@ self.addEventListener("activate", (event) => {
 
 // Fetch Cached Assets (Offline Support)
 self.addEventListener("fetch", (event) => {
+    console.log("Service Worker: Fetching", event.request.url);
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);

@@ -1,17 +1,18 @@
 let deferredPrompt;
 
 document.addEventListener("DOMContentLoaded", () => {
-    const installOverlay = document.getElementById("installOverlay");
-    const installButton = document.getElementById("installButton");
-    const closeOverlay = document.getElementById("closeOverlay");
+    const installOverlay = document.getElementById("install-overlay");
+    const installButton = document.getElementById("install-button");
+    const dismissButton = document.getElementById("dismiss-button");
 
-    if (!installOverlay || !installButton || !closeOverlay) {
+    if (!installOverlay || !installButton || !dismissButton) {
         console.error("Install elements not found in the DOM.");
         return;
     }
 
     // Capture the beforeinstallprompt event
     window.addEventListener("beforeinstallprompt", (event) => {
+        console.log("beforeinstallprompt event triggered");
         event.preventDefault();
         deferredPrompt = event;
         installOverlay.style.display = "flex"; // Show overlay
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Handle "Maybe Later" button
-    closeOverlay.addEventListener("click", () => {
+    dismissButton.addEventListener("click", () => {
         installOverlay.style.display = "none";
     });
 
@@ -39,4 +40,3 @@ document.addEventListener("DOMContentLoaded", () => {
         installOverlay.style.display = "none"; // Ensure overlay hides after install
     });
 });
-//

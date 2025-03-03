@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/install.css">
-
+    
+    <!-- Link to Manifest -->
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 
@@ -47,7 +49,7 @@
         </div>
     </section>
 
-    <!-- Install App Overlay (MISSING PART - NOW ADDED) -->
+    <!-- Install App Overlay -->
     <div id="install-overlay" class="install-overlay">
         <div class="install-popup">
             <h2>Install 4D Youth App</h2>
@@ -73,6 +75,15 @@
 
     <!-- Install App Script -->
     <script src="js/install.js" defer></script>
+
+    <!-- Register Service Worker -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+                .then(() => console.log("Service Worker Registered"))
+                .catch(err => console.error("Service Worker registration failed:", err));
+        }
+    </script>
 
 </body>
 </html>
