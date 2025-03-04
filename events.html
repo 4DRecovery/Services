@@ -21,10 +21,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="transportation.html">Transportation</a></li>
-                <li><a href="events.html">Schedule</a></li>
-				<li><a href="curriculum.html">Curriculum</a></li>
-
-          </ul>
+                <li><a href="events.html" class="active">Schedule</a></li>
+                <li><a href="curriculum.html">Curriculum</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -32,27 +31,39 @@
     <main class="container"><center>
         <h1>Upcoming Events at Our Recovery Center&nbsp;</h1>
         <p>Stay updated with our latest events, group meetings, and special activities.<br>
-        To view up to date flyers &amp; our youth website, <a href="https://sites.google.com/4drecovery.org/youth/meeting-board"><strong>please visit us here </strong></a></p>
+        To view up-to-date flyers & our youth website, <a href="https://sites.google.com/4drecovery.org/youth/meeting-board"><strong>please visit us here </strong></a></p>
 
-        <!-- Google Calendar Embed -->
-        <div class="calendar-container">
-            <iframe src="https://calendar.google.com/calendar/embed?src=eventsyouth@4drecovery.org&ctz=America/Los_Angeles" 
-            style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-            <p>&nbsp;</p></center>
+        <!-- Google Calendar Embed with Lazy Loading -->
+        <div class="calendar-container" id="calendar-container">
+            <p>Loading Events...</p>
         </div>
-    </main>
-	
-	<main class="container">
-        <center><h1>4D Recovery - Treatment Schedule&nbsp;</h1>
-        <p>Stay updated with what's happening at our Treatment Center</p>
-<!-- This website has been designed with love by Robert Sanders @ Recovery Uprise -->
-        <!-- Google Calendar Embed -->
-        <div class="calendar-container">
-            <iframe src="https://calendar.google.com/calendar/embed?src=c_3533bd6f42a75f73775f11b5818f61870790574ebf40fb3d3fc41a54b8a6f6a2%40group.calendar.google.com&ctz=America%2FLos_Angeles" 
-            style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
-            <p>&nbsp;</p></center>
-        </div>
-</main>
+    </center></main>
+
+    <!-- JavaScript to Load Google Calendar Efficiently -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calendarContainer = document.getElementById("calendar-container");
+            const calendarIframe = document.createElement("iframe");
+            calendarIframe.src = "https://calendar.google.com/calendar/embed?src=eventsyouth@4drecovery.org&mode=AGENDA&ctz=America/Los_Angeles";
+            calendarIframe.style.border = "0";
+            calendarIframe.width = "100%";
+            calendarIframe.height = "600";
+            calendarIframe.frameBorder = "0";
+            calendarIframe.scrolling = "no";
+            calendarIframe.loading = "lazy";
+            
+            // Replace placeholder text with the iframe once it's fully loaded
+            calendarIframe.onload = function () {
+                calendarContainer.innerHTML = "";
+                calendarContainer.appendChild(calendarIframe);
+            };
+            
+            // Append iframe after the page has loaded
+            setTimeout(() => {
+                calendarContainer.appendChild(calendarIframe);
+            }, 500);
+        });
+    </script>
 
     <!-- Footer Section -->
     <footer>
