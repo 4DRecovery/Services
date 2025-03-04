@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4D Youth - Home</title>
-    
+
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -21,7 +21,9 @@
             <a href="index.html" class="logo-link">
                 <img src="assets/logo.png" alt="Young Recovery Logo" class="logo">
             </a>
+            <button class="hamburger" onclick="toggleMenu()">☰</button>
             <ul class="navbar">
+                <button class="close-menu" onclick="toggleMenu()">✖</button>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="transportation.html">Transportation</a></li>
@@ -73,8 +75,9 @@
         </div>
     </footer>
 
-    <!-- Install App Script -->
+    <!-- Scripts -->
     <script src="./install.js" defer></script>
+    <script src="js/menu.js" defer></script>
 
     <!-- Register Service Worker -->
     <script>
