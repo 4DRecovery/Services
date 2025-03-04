@@ -1,38 +1,29 @@
-/* Define reusable CSS variables for colors */
-:root {
-    --primary-color: #1E2A38;
-    --accent-color: #6BE3E3;
-    --hover-color: #A084E8;
-    --shadow-color: rgba(0, 0, 0, 0.2);
-}
-
 /* Ensure header is fixed */
 header {
-    background-color: var(--primary-color);
+    background-color: #1E2A38;
     padding: 10px 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0px 4px 6px var(--shadow-color);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
-    min-height: 60px;
 }
 
-/* Navbar container */
+/* Navbar container - Centers the nav & keeps width controlled */
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1200px; /* Restricts width to prevent overflow */
     width: 100%;
     padding: 15px 20px;
 }
 
-/* Logo Styling */
+/* Adjusted Logo Styling */
 .logo {
-    height: 120px;
+    height: 120px; /* Reduced size for balance */
     width: auto;
     margin-top: -10px;
 }
@@ -49,19 +40,18 @@ header {
 
 /* Navbar Links */
 .navbar a {
-    color: var(--accent-color);
+    color: #6BE3E3;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 16px; /* Reduced font size slightly */
     font-weight: bold;
     padding: 8px 12px;
-    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out, transform 0.2s ease;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 }
 
-/* Navbar Hover Effect */
+/* Navbar Hover Effect - Subtle Purple */
 .navbar a:hover {
-    color: var(--hover-color);
-    border-bottom: 2px solid var(--hover-color);
-    transform: scale(1.05);
+    color: #A084E8; /* Soft Purple */
+    border-bottom: 2px solid #A084E8;
 }
 
 /* Mobile Adjustments */
@@ -77,7 +67,6 @@ header {
     }
 
     .navbar {
-        display: none; /* Hide navbar by default on mobile */
         flex-direction: column;
         gap: 10px;
     }
@@ -85,54 +74,5 @@ header {
     .navbar a {
         font-size: 14px;
         padding: 8px 10px;
-    }
-
-    /* Add padding-top to prevent header overlap */
-    body {
-        padding-top: 80px;
-    }
-
-    /* Hidden checkbox input to toggle the menu */
-    input[type="checkbox"] {
-        display: none;
-    }
-
-    /* Show hamburger menu on mobile */
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 1010;
-    }
-
-    .hamburger .bar {
-        width: 25px;
-        height: 3px;
-        background-color: #fff;
-        border-radius: 5px;
-    }
-
-    /* When checkbox is checked, display the navbar */
-    input[type="checkbox"]:checked + .hamburger + .navbar {
-        display: flex;
-    }
-
-    /* Hamburger Animation */
-    input[type="checkbox"]:checked + .hamburger .bar:nth-child(1) {
-        transform: rotate(45deg);
-        position: relative;
-        top: 6px;
-    }
-
-    input[type="checkbox"]:checked + .hamburger .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    input[type="checkbox"]:checked + .hamburger .bar:nth-child(3) {
-        transform: rotate(-45deg);
-        position: relative;
-        top: -6px;
     }
 }
