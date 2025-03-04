@@ -1,12 +1,12 @@
 const CACHE_NAME = "4D-Youth-Cache-v1";
 const ASSETS_TO_CACHE = [
-    "/",
-    "/index.html",
-    "/manifest.json",
-    "/assets/logo.png",
-    "/css/header.css",
-    "/css/body.css",
-    "/css/footer.css"
+    "./",
+    "./index.html",
+    "./manifest.json",
+    "./Services/assets/logo.png",  // ✅ Corrected path
+    "./css/header.css",
+    "./css/body.css",
+    "./css/footer.css"
 ];
 
 // Install Service Worker & Cache Assets
@@ -15,7 +15,9 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log("Caching assets...");
-            return cache.addAll(ASSETS_TO_CACHE);
+            return cache.addAll(ASSETS_TO_CACHE).catch((error) => {
+                console.error("Cache failed:", error);
+            });
         })
     );
 });
@@ -42,9 +44,14 @@ self.addEventListener("fetch", (event) => {
     console.log("Service Worker: Fetching", event.request.url);
     event.respondWith(
         caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        }).catch(() => {
-            return caches.match("/index.html");
+            if (response) {
+                console.log("Serving from cache:", event.request.url);
+                return response;
+            }
+            return fetch(event.request).catch(() => {
+                console.warn("Fetch failed, serving fallback:", event.request.url);
+                return caches.match("./index.html"); // Fallback to homepage if offline
+            });
         })
     );
 });
