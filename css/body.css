@@ -280,3 +280,21 @@ footer {
     background: #ccc;
     color: black;
 }
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.styled-table th {
+    background-color: #1E2A38;
+    color: white;
+    font-weight: bold;
+}
