@@ -3,22 +3,20 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-body {
     font-family: 'Open Sans', sans-serif;
     background-color: #F5F5F5;
     margin: 0;
-    padding-top: 180px;
+    padding: 0; /* Remove the 120px padding */
     flex-grow: 1;
 }
 
 /* Hero Section */
 .hero {
+    margin-top: 80px; /* Matches the height of the fixed header */
+    padding: 100px 20px;
     background: linear-gradient(to right, #6BE3E3, #A084E8);
     color: white;
     text-align: center;
-    padding: 100px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,17 +24,17 @@ body {
 }
 
 .hero-content {
-    width: 800px;
+    width: 900px;
     max-width: 90%;
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 15px;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 25px;
 }
 
@@ -49,14 +47,13 @@ section {
 
 /* Standardized Content Box */
 .container {
-    width: 800px;
+    width: 900px;
     max-width: 90%;
     background: white;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 40px auto;
-    flex-grow: 1;
+    margin: 20px auto;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -110,44 +107,106 @@ section {
 }
 
 /* Buttons */
-.button {
+.button, .cta-button, .styled-link {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 12px 18px;
     background-color: #6BE3E3;
     color: white;
     font-weight: bold;
     border-radius: 8px;
     text-align: center;
+    text-decoration: none;
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-    text-decoration: none;
-}
-.ride-request-link {
-    color: #6BE3E3;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
 }
 
-.ride-request-link:hover {
-    color: #A084E8;
-    text-decoration: underline;
-}
-
-/* Button Hover Effect */
-.button:hover {
+.button:hover, .cta-button:hover, .styled-link:hover {
     background-color: #A084E8;
     transform: scale(1.05);
 }
 
-/* Google Calendar */
-iframe {
+/* Info Grid Layout */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.info-box {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.community-agreements {
+    background: #1E2A38;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.community-agreements .container {
+    background: white;
+    color: #1E2A38;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    max-width: 90%;
+    margin: 20px auto;
+}
+
+/* Fix Grid */
+.agreements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Style Each Agreement Box */
+.agreement-box {
+    background: white;
+    color: #1E2A38;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Table Styling */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    background: white;
     border-radius: 10px;
     overflow: hidden;
 }
 
-/* Footer Fix */
-footer {
-    margin-top: auto;
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.styled-table th {
+    background-color: #1E2A38;
+    color: white;
+    font-weight: bold;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.styled-table tr:hover {
+    background-color: #e6f7ff;
 }
 
 /* Mobile Adjustments */
@@ -166,135 +225,16 @@ footer {
         width: 100%;
         max-width: 250px;
     }
-}
-/* Styling for CTA Section */
-.cta-list {
-    list-style: none; /* Removes default bullets */
-    padding: 0;
-    text-align: left;
-}
 
-.cta-list li {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
+    .hero-content h1 {
+        font-size: 2rem;
+    }
 
-/* Ensure links are clearly visible & match theme */
-.cta-link {
-    color: #6BE3E3; /* Matches your website's theme */
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
+    .hero-content p {
+        font-size: 1.1rem;
+    }
 
-.cta-link:hover {
-    color: #A084E8; /* Slight color change on hover */
-    text-decoration: underline;
-}
-/* Improves the visual style of the link */
-.styled-link {
-    display: inline-block;
-    background-color: #6BE3E3;  /* Your brand color */
-    color: white;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Hover effect */
-.styled-link:hover {
-    background-color: #A084E8;  /* Secondary brand color */
-    transform: scale(1.05);
-}
-/* Family Support Box */
-.family-support-box {
-    background: #f4f4f4;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Button Styling */
-.styled-link {
-    display: inline-block;
-    background-color: #6BE3E3;  /* Your brand color */
-    color: white;
-    font-weight: bold;
-    padding: 10px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Hover Effect */
-.styled-link:hover {
-    background-color: #A084E8;  /* Secondary brand color */
-    transform: scale(1.05);
-}
-
-
-#installOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.install-modal {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.install-modal p {
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.install-modal button {
-    margin: 5px;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-#installButton {
-    background: #007bff;
-    color: white;
-}
-
-#closeButton {
-    background: #ccc;
-    color: black;
-}
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 16px;
-}
-
-.styled-table th, .styled-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-}
-
-.styled-table th {
-    background-color: #1E2A38;
-    color: white;
-    font-weight: bold;
+    .styled-table th, .styled-table td {
+        padding: 8px;
+    }
 }

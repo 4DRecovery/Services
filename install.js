@@ -1,42 +1,53 @@
-let deferredPrompt;
+#install-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-    const installOverlay = document.getElementById("install-overlay");
-    const installButton = document.getElementById("install-button");
-    const dismissButton = document.getElementById("dismiss-button");
+.install-popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 350px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    if (!installOverlay || !installButton || !dismissButton) {
-        console.error("Install elements not found in the DOM.");
-        return;
-    }
+.install-popup h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
 
-    // Capture the beforeinstallprompt event
-    window.addEventListener("beforeinstallprompt", (event) => {
-        console.log("beforeinstallprompt event triggered");
-        event.preventDefault();
-        deferredPrompt = event;
-        installOverlay.style.display = "flex"; // Show overlay
-    });
+.install-popup p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
 
-    // Handle install button click
-    installButton.addEventListener("click", async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const choiceResult = await deferredPrompt.userChoice;
-            console.log(choiceResult.outcome === "accepted" ? "User accepted install" : "User dismissed install");
-            deferredPrompt = null;
-        }
-        installOverlay.style.display = "none";
-    });
+.install-popup button {
+    background: #00d1b2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
 
-    // Handle "Maybe Later" button
-    dismissButton.addEventListener("click", () => {
-        installOverlay.style.display = "none";
-    });
+.install-popup button:hover {
+    background: #00a896;
+}
 
-    // Listen for successful install
-    window.addEventListener("appinstalled", () => {
-        console.log("PWA was installed successfully!");
-        installOverlay.style.display = "none"; // Ensure overlay hides after install
-    });
-});
+#dismiss-btn {
+    background: #ccc;
+}
+
+#dismiss-btn:hover {
+    background: #999;
+}
