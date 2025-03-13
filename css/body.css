@@ -407,3 +407,85 @@ footer {
     background-color: #A084E8;
     transform: scale(1.05);
 }
+
+/* FAQ Section Styling */
+.faq {
+    background-color: #1E2A38; /* Dark background to match theme */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.accordion details {
+    background: #1E2A38; /* Accordion background */
+    margin-bottom: 15px; /* Increased space between accordion items */
+    border-radius: 8px;
+    border: 1px solid #6BE3E3; /* Light border for visibility */
+}
+
+.accordion summary {
+    cursor: pointer;
+    font-size: 18px;
+    padding: 12px;
+    font-weight: bold;
+    border: none;
+    color: #6BE3E3; /* Teal color to match theme */
+    background: #1E2A38; /* Background matches the overall theme */
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Accordion Hover Effect */
+.accordion summary:hover {
+    background-color: #A084E8; /* Background color on hover */
+    color: white; /* Text color change on hover */
+}
+
+/* Accordion Arrow Styling */
+.accordion details summary::after {
+    content: "▼"; /* Default "down" arrow */
+    padding-left: 10px;
+    transition: transform 0.3s ease; /* Smooth transition */
+    color: #6BE3E3; /* Light arrow color for better visibility */
+}
+
+/* Rotate the arrow when open */
+.accordion details[open] summary::after {
+    content: "▲"; /* "Up" arrow when expanded */
+    transform: rotate(180deg); /* Rotate the arrow */
+}
+
+/* Accordion Answer (Content) Styling */
+.accordion p {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background: #1E2A38; /* Background of the answer */
+    border-radius: 8px;
+}
+
+/* Optional: Style the question more for better visibility */
+.accordion details[open] summary {
+    background-color: #A084E8; /* Change background when expanded */
+    color: white; /* Ensure text stands out */
+}
+
+/* Optional: Arrow position and size adjustment */
+.accordion details summary::after {
+    font-size: 1.2rem; /* Increase arrow size */
+}
+
+/* Mobile Adjustments for Accordion */
+@media (max-width: 768px) {
+    .faq {
+        padding: 15px; /* Adjust padding for mobile */
+    }
+
+    .accordion summary {
+        font-size: 16px; /* Adjust font size for mobile */
+    }
+
+    .accordion p {
+        font-size: 14px; /* Adjust paragraph font size for mobile */
+    }
+}
