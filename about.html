@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4D Youth - About Us</title>
+    
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/install.css">
+    
+    <!-- Link to Manifest -->
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/logo.png" alt="Young Recovery Logo" class="logo">
+            </a>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="transportation.html">Transportation</a></li>
+                <li><a href="events.html">Schedule</a></li>
+                <li><a href="curriculum.html">Curriculum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to 4D Recovery</h1>
+            <p>Empowering youth and families on their journey to recovery through comprehensive support and services.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <!-- Video Section with Executive Director's Message -->
+                <div class="about-video">
+                    <h2>Message from Our Executive Director</h2>
+                    <div class="video-wrapper">
+                        <iframe width="100%" height="500px" src="https://www.youtube.com/embed/3O2c6vrCFLg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <!-- Mission, Vision & Values -->
+                <div class="about-text">
+                    <h2>Our Mission & Vision</h2>
+                    <p><strong>Our Vision:</strong></p>
+                    <p>4D envisions a future where systems, communities, and individuals work together ensuring all people receive the support needed to find and sustain recovery from substances.</p>
+                    <p><strong>Our Mission:</strong></p>
+                    <p>To provide–in partnership with systems, communities, and individuals–comprehensive services that help adolescents, young adults, and families recover from substance use disorders.</p>
+
+                    <h3>Five Values & Rights</h3>
+                    <ul>
+                        <li><strong>Age-Specific Services:</strong> Young adults have specialized needs and therefore require age-specific recovery services that are sensitive to race, culture, and gender identity.</li>
+                        <li><strong>Equality in Recovery:</strong> Substance use disorder does not discriminate and neither should systems, communities, or individuals that support recovery. Recovery support should be on demand and available to everyone regardless of race, ethnicity, gender identity, or the ability to pay for treatment.</li>
+                        <li><strong>Unique Journeys:</strong> Each person’s recovery journey is unique, and they are the experts in their own life. All pathways to recovery are equally valid, including harm reduction and medication-assisted treatment.</li>
+                        <li><strong>Peer Services:</strong> Peer services are as vital as clinical services. Working together is the best way to ensure successful, long-term recovery.</li>
+                        <li><strong>Combating Stigma:</strong> Stigma is a major barrier in helping people recover. Substance use disorder is a disease–not a moral failing.</li>
+                    </ul>
+
+                    <!-- Link to Main Website -->
+                    <p>To learn more about our programs and services, visit our main website: <a href="https://www.4drecovery.org" target="_blank">4D Recovery</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-divider"></div>
+            <p>© 2025 4D Recovery, Youth Services</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Install App Script -->
+    <script src="./install.js" defer></script>
+
+    <!-- Register Service Worker -->
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("./service-worker.js")
+                .then(() => console.log("Service Worker Registered"))
+                .catch(err => console.error("Service Worker registration failed:", err));
+        }
+    </script>
+
+</body>
+</html>
