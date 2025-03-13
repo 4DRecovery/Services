@@ -38,6 +38,17 @@ html, body {
     margin-bottom: 25px;
 }
 
+/* Mobile Adjustments for Hero Section */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem; /* Adjust heading size for smaller screens */
+    }
+
+    .hero-content p {
+        font-size: 1.1rem; /* Adjust paragraph text size */
+    }
+}
+
 /* Sections */
 section {
     padding: 60px 20px;
@@ -59,8 +70,16 @@ section {
 
 /* Hover Effect */
 .container:hover {
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(-5px) scale(1.02); /* Restoring hover effect */
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Adjustments for Containers */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 30px;
+    }
 }
 
 /* Service Boxes */
@@ -107,27 +126,53 @@ section {
 }
 
 /* Buttons */
-.button, .cta-button, .styled-link {
+.button {
     display: inline-block;
-    padding: 12px 18px;
+    padding: 12px 20px;
     background-color: #6BE3E3;
     color: white;
     font-weight: bold;
     border-radius: 8px;
     text-align: center;
-    text-decoration: none;
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    text-decoration: none;
 }
 
-.button:hover, .cta-button:hover, .styled-link:hover {
+.ride-request-link {
+    color: #6BE3E3;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.ride-request-link:hover {
+    color: #A084E8;
+    text-decoration: underline;
+}
+
+/* Button Hover Effect */
+.button:hover {
     background-color: #A084E8;
     transform: scale(1.05);
 }
 
-/* Info Grid Layout */
+/* Google Calendar */
+iframe {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%; /* Ensure iframe fits inside container */
+    height: 600px; /* Keep consistent height */
+}
+
+/* Footer Fix */
+footer {
+    margin-top: auto;
+}
+
+/* Info Grid Layout for Clinical Services */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Makes the grid responsive */
     gap: 20px;
     margin-top: 20px;
 }
@@ -141,6 +186,7 @@ section {
     text-align: center;
 }
 
+/* Community Agreements */
 .community-agreements {
     background: #1E2A38;
     text-align: center;
@@ -237,41 +283,41 @@ section {
     .styled-table th, .styled-table td {
         padding: 8px;
     }
-    
+
     .video-section {
         margin: 80px 0; /* Adds more space around the video */
     }
-    
+
     .container {
         width: 100%;
-        max-width: 1200px; /* You can adjust this based on the design width you want */
+        max-width: 1200px; /* Adjust width */
         margin: 0 auto;
         padding: 0 20px; /* Adds padding for spacing */
     }
-    
+
     .info-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Makes the grid responsive */
         gap: 20px; /* Adds space between grid items */
     }
-    
+
     .video-section {
         margin: 80px 0; /* Adds more space around the video */
     }
-    
+
     .container {
         width: 100%;
-        max-width: 1200px; /* You can adjust this based on the design width you want */
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px; /* Adds padding for spacing */
     }
-    
+
     .info-grid {
         display: grid;
         grid-template-columns: 1fr; /* Ensures the video section only takes one column */
         gap: 20px; /* Adds space between grid items */
     }
-    
+
     .video-wrapper {
         position: relative;
         width: 100%;
@@ -281,6 +327,7 @@ section {
         margin: 0 auto;
     }
 }
+
 /* Services and Calendar Two-Column Layout */
 .services-calendar-container {
     margin-top: 40px;
@@ -327,104 +374,8 @@ section {
         margin-bottom: 40px;
     }
 }
-/* Services and Calendar Two-Column Layout */
-.services-calendar-container {
-    margin-top: 40px;
-}
 
-.services-calendar-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns layout */
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.services-column {
-    padding: 20px;
-}
-
-.calendar-column {
-    padding: 20px;
-}
-
-/* Calendar Styling */
-.calendar-container {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 100%; /* Ensure it doesn’t go beyond the container */
-}
-
-.calendar-container iframe {
-    width: 100%;
-    height: 600px;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .services-calendar-grid {
-        grid-template-columns: 1fr; /* Stack the content on mobile */
-    }
-
-    .calendar-container {
-        height: 400px;
-    }
-
-    .services-column, .calendar-column {
-        margin-bottom: 40px;
-    }
-}
-
-/* Styling for Recovery Support Services Section */
-.recovery-support-services {
-    margin-bottom: 40px;
-}
-
-/* Styling for Recovery Community Center Section */
-.recovery-community-center {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-/* Community Center Agreements Section */
-.community-center-agreements {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-/* Info Grid */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-/* Service Links Styling */
-.service-links {
-    margin-top: 40px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.service-box {
-    padding: 15px 25px;
-    background-color: #6BE3E3;
-    color: white;
-    text-align: center;
-    border-radius: 8px;
-    transition: background 0.3s ease, transform 0.2s ease;
-    text-decoration: none;
-}
-
-.service-box:hover {
-    background-color: #A084E8;
-    transform: scale(1.05);
-}
+/* Mailto Link Styled as a Button */
 .mailto-link {
     display: inline-block;
     padding: 12px 20px;
