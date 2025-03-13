@@ -53,21 +53,87 @@ header {
     border-bottom: 2px solid #A084E8;
 }
 
+/* Hamburger Icon (only visible on mobile) */
+.hamburger-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger-icon .line {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 4px;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 900px) {
-    .nav-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .logo {
-        height: 70px;
-    }
+    /* Hide Navbar by default */
     .navbar {
+        display: none;
         flex-direction: column;
         gap: 10px;
+        text-align: center;
+        width: 100%;
+        padding: 20px 0;
+        background-color: #1E2A38; /* Optional: Background color for mobile navbar */
+        position: absolute;
+        top: 70px; /* Adjust this based on the height of the header */
+        left: 0;
     }
+
+    /* Show Hamburger Icon on Mobile */
+    .hamburger-icon {
+        display: flex;
+    }
+
+    /* Adjust font size for mobile */
     .navbar a {
         font-size: 14px;
+        padding: 10px 0;
+    }
+    
+    /* Smooth transition for the navbar */
+    .navbar {
+        transition: transform 0.3s ease;
+        transform: translateY(-100%); /* Start with navbar hidden above */
+    }
+
+    .navbar.active {
+        transform: translateY(0); /* Slide the navbar into view */
+    }
+}
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+    /* Hide Navbar by default */
+    .navbar {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        width: 100%;
+        padding: 20px 0;
+        background-color: #1E2A38; /* Optional: Background color for mobile navbar */
+        position: absolute;
+        top: 70px; /* Adjust this based on the height of the header */
+        left: 0;
+    }
+
+    /* Show Hamburger Icon on Mobile */
+    .hamburger-icon {
+        display: flex;
+    }
+
+    /* Show Navbar when active */
+    .navbar.active {
+        display: flex; /* Navbar will be shown */
+    }
+
+    /* Adjust font size for mobile */
+    .navbar a {
+        font-size: 14px;
+        padding: 10px 0;
     }
 }

@@ -14,20 +14,30 @@
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <nav class="nav-container">
-            <a href="index.html" class="logo-link">
-                <img src="assets/logo.png" alt="Young Recovery Logo" class="logo">
-            </a>
-            <ul class="navbar">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="transportation.html">Transportation</a></li>
-                <li><a href="about.html">About 4D</a></li>
-            </ul>
-        </nav>
-    </header>
+   <!-- HEADER SECTION-->
+   <header>
+    <div class="nav-container">
+        <!-- Logo -->
+        <a href="index.html" class="logo-link">
+            <img src="assets/logo.png" alt="Young Recovery Logo" class="logo">
+        </a>
+
+        <!-- Hamburger Icon (only visible on mobile) -->
+        <div class="hamburger-icon" id="hamburger-icon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <!-- Navbar (hidden on mobile by default) -->
+        <ul class="navbar" id="navbar">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="transportation.html">Transportation</a></li>
+            <li><a href="about.html">About 4D</a></li>
+        </ul>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -181,5 +191,17 @@
         </div>
     </footer>
 
-</body>
-</html>
+    <script>
+        // Get the hamburger icon and navbar elements
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const navbar = document.getElementById('navbar');
+    
+        // Toggle the navbar visibility when the hamburger icon is clicked
+        hamburgerIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+    
+    </body>
+    </html>
+    
