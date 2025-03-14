@@ -3,7 +3,7 @@ name: Purge GitHub Pages Cache
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main  # Change this if your default branch is different
 
 jobs:
   purge_cache:
@@ -29,3 +29,5 @@ jobs:
           git add cache_buster.txt
           git commit -m "Cache Bust" || echo "No changes to commit"
           git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
