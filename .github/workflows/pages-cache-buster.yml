@@ -1,0 +1,31 @@
+name: Purge GitHub Pages Cache
+
+on:
+  push:
+    branches:
+      - main  # Change if your default branch is different
+
+jobs:
+  purge_cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false  # Prevents credential conflicts
+
+      - name: Set up Git user identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Authenticate with GitHub Token
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/4DRecovery/Services.git
+
+      - name: Touch a file to force update
+        run: |
+          touch cache_buster.txt
+          git add cache_buster.txt
+          git commit -m "Cache Bust" || echo "No changes to commit"
+          git push origin main
